@@ -3,29 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Upload Lembar Penilaian GP</title>
+    <title>Sistem GP</title>
     <style>
-        /* CSS agar Iframe penuh 100% di layar hp maupun PC */
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden; /* Menghilangkan scroll ganda */
-            background-color: #f0f2f5;
-        }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
-        }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden;}
+        iframe { width: 100%; height: 100%; border: none; display: block; }
     </style>
 </head>
 <body>
+    <iframe id="gasFrame" src=""></iframe>
 
-    <!-- GANTI URL DI BAWAH INI DENGAN URL WEB APP GAS ANDA -->
-    <iframe src="https://script.google.com/macros/s/AKfycbwoZ3WyCLAPq4PXBNIhZJiZLFqbV_7-t0KD3gFEs959qmKANQnn0SKMC8HRv0HeXPrWLg/exec" title="Form Upload GP"></iframe>
+    <script>
+        // 1. Masukkan URL Web App GAS Anda HINGGA /exec (JANGAN tambahkan ?p=admin)
+        const baseUrl = "https://script.google.com/macros/s/AKfycbwoZ3WyCLAPq4PXBNIhZJiZLFqbV_7-t0KD3gFEs959qmKANQnn0SKMC8HRv0HeXPrWLg/exec";
 
+        // 2. Ambil parameter dari URL browser (misal ?p=admin)
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // 3. Rakit kembali URL-nya
+        let finalUrl = baseUrl;
+        if(urlParams.toString()) {
+            finalUrl += "?" + urlParams.toString();
+        }
+
+        // 4. Masukkan URL yang sudah dirakit ke dalam iframe
+        document.getElementById("gasFrame").src = finalUrl;
+    </script>
 </body>
 </html>
