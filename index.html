@@ -2,15 +2,29 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem GP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sistem GP - DISDIKBUD</title>
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden;}
-        iframe { width: 100%; height: 100%; border: none; display: block; }
+        /* Menggunakan 100dvh agar iframe tidak tertutup menu peramban HP */
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            width: 100%; 
+            height: 100vh; /* Fallback untuk browser lama */
+            height: 100dvh; /* Dynamic Viewport untuk HP modern */
+            overflow: hidden;
+            background-color: #f0f2f5;
+        }
+        iframe { 
+            width: 100%; 
+            height: 100%; 
+            border: none; 
+            display: block; 
+        }
     </style>
 </head>
 <body>
-    <iframe id="gasFrame" src=""></iframe>
+    <iframe id="gasFrame" src="" allow="fullscreen; clipboard-read; clipboard-write"></iframe>
 
     <script>
         // 1. Masukkan URL Web App GAS Anda HINGGA /exec (JANGAN tambahkan ?p=admin)
